@@ -9,15 +9,23 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <form>
+            <label for="cookieInput">Enter new username</label>
+        <input type="text" id="cookieInput" name="cookieInput" required/>
+        <input type="submit" onclick="setCookie(document.getElementById('cookieInput').value)"/>
+        </form>
         <div id="cookieDisplay">
         </div>
         <script>
-            document.cookie = "username=John Doe";
             let x = document.cookie;
             console.log("cookie: " + x);
             const para = document.createElement("p");
 const node = document.createTextNode(x);
 para.appendChild(node);
+            function setCookie(cookieInput=''){
+                document.cookie = `username=${cookieInput}`
+                alert('Refresh to view new cookie')
+            }
 
 const element = document.getElementById("cookieDisplay");
 element.appendChild(para);
